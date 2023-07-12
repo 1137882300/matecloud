@@ -2,6 +2,7 @@ package vip.mate.core.common.util;
 
 import com.alibaba.ttl.TtlCallable;
 import com.alibaba.ttl.TtlRunnable;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.concurrent.ListenableFuture;
 
@@ -18,7 +19,7 @@ public class CustomThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
     private static final long serialVersionUID = -1620411091519062590L;
 
     @Override
-    public void execute(Runnable runnable) {
+    public void execute(@NotNull Runnable runnable) {
         Runnable ttlRunnable = TtlRunnable.get(runnable);
         super.execute(ttlRunnable);
     }
